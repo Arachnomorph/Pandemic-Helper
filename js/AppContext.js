@@ -17,7 +17,7 @@ function AppContextProvider({children}) {
             id: cards.length,
             description: val,
             discarded: true,
-            stack: 1
+            stack: 0
         }
         setCards(prev => prev.concat(card))
     }, [cards])
@@ -30,9 +30,9 @@ function AppContextProvider({children}) {
         if (isShuffled) {
             setCards(prev => prev.map(card => {
                 if (card.discarded) {
-                    return {...card, stack: 1, discarded: false}
+                    return {...card, stack: card.stack, discarded: false}
                 } else {
-                    return {...card, stack: 2, discarded: false}
+                    return {...card, stack: card.stack + 1, discarded: false}
                 }
             }))
         } else {
@@ -44,11 +44,9 @@ function AppContextProvider({children}) {
         const id = parseInt(e.target.id);
         setCards(prev => prev.map(card => {
             if (card.id !== id) {
-                console.log(card)
                 return {...card}
             }
-            console.log(card)
-            return {...card, discarded: true}
+            return {...card, discarded: true, stack: 0}
         }))
     }, [cards])
 
