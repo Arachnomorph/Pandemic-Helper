@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import AppContext from "./AppContext";
 
 function Piles() {
-    const {dbClear, cards, handleShuffle, handleDiscard} = useContext(AppContext);
+    const {clearAll, cards, handleShuffle, handleDiscard} = useContext(AppContext);
 
     return (
         <div style={{display: 'flex'}}>
@@ -23,7 +23,7 @@ function Piles() {
                 </ul>
                 <button onClick={handleShuffle}>Shuffle</button>
             </div>
-            <button onClick={dbClear}>Clear all</button>
+            <button onClick={clearAll}>Clear all</button>
         </div>
     )
 }

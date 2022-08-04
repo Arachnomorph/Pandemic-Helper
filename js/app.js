@@ -7,10 +7,10 @@ import {AppContextProvider} from "./AppContext";
 const App = () => {
 
     return (
-        <AppContextProvider>
-            <CardAdder/>
-            <Piles/>
-        </AppContextProvider>
+            <AppContextProvider>
+                <CardAdder/>
+                <Piles/>
+            </AppContextProvider>
     )
 }
 

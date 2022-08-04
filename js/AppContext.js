@@ -1,82 +1,26 @@
 import React, {createContext, useCallback, useEffect, useMemo, useState} from "react";
 
 const AppContext = createContext(null);
-const api_url = 'http://localhost:3000/cards/';
 
 function AppContextProvider({children}) {
     const [cards, setCards] = useState([]);
 
-    const dbClear = useCallback(() => {
-        cards.forEach(card => {
-            fetch(api_url + (card.id), {
-                method: 'DELETE',
-                headers: {'Content-Type': 'application/json'},
-            })
-                .then(resp => {
-                    if (resp.ok) {
-                        return resp.json()
-                    }
-                    throw new Error('response code = bad')
-                })
-                .then(() => {
-                    setCards([]);
-                })
-                .catch(err => console.error(err))
-        })
+    const clearAll = useCallback(() => {
+        setCards([]);
     }, [cards])
 
-    useEffect(() => {
-        dbUpdate();
-    }, [])
-
-    const dbUpdate = useCallback(() => {
-        fetch(api_url, {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'},
-        })
-            .then(resp => {
-                if (resp.ok) {
-                    return resp.json()
-                }
-                throw new Error('response code = bad')
-            })
-            .then(data => {
-                setCards(data);
-            })
-            .catch(err => console.error(err))
-    }, [cards])
-
-    const dbAdd = useCallback((data) => {
-        fetch(api_url, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data)
-        })
-            .then(resp => {
-                if (resp.ok) {
-                    return resp.json()
-                }
-                throw new Error('response code = bad')
-            })
-            .then(data => {
-                setCards((prev) => prev.concat(data))
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }, [])
-
-    const handleCardAdder = useCallback((val) => {
-        if (!val.length) {
+    const handleCreateCard = useCallback(val => {
+        if (!val) {
             return
         }
-        dbAdd({
+        const card = {
+            id: cards.length,
             description: val,
             discarded: true,
             stack: 1
-        });
-        // dbUpdate();
-    }, [dbAdd])
+        }
+        setCards(prev => prev.concat(card))
+    }, [cards])
 
     const isShuffled = useCallback(() => {
         return cards.some(el => !el.discarded);
@@ -94,28 +38,30 @@ function AppContextProvider({children}) {
         } else {
             setCards(prev => prev.map(card => ({...card, discarded: false})))
         }
-    }, [cards, dbAdd, isShuffled])
+    }, [cards, isShuffled])
 
     const handleDiscard = useCallback((e) => {
         const id = parseInt(e.target.id);
         setCards(prev => prev.map(card => {
             if (card.id !== id) {
-                return card
+                console.log(card)
+                return {...card}
             }
+            console.log(card)
             return {...card, discarded: true}
         }))
-    }, [dbAdd])
+    }, [cards])
 
     const value = useMemo(() => {
         return {
-            dbClear,
+            clearAll,
             cards,
             setCards,
-            handleCardAdder,
+            handleCreateCard,
             handleShuffle,
             handleDiscard
         }
-    }, [cards, handleCardAdder])
+    }, [cards, handleCreateCard()])
 
     return (
         <AppContext.Provider value={value}>
