@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import AppContext from "./AppContext";
 
 function Piles() {
-    const {clearAll, cards, handleShuffle, handleDiscard} = useContext(AppContext);
+    const {clearAll, cards, handleShuffle, handleDiscard, handleInfect} = useContext(AppContext);
 
     return (
         <div style={{display: 'flex'}}>
@@ -11,7 +11,8 @@ function Piles() {
                 <ul>{cards.filter(card => !card.discarded).sort((a, b) => {
                     return (a.stack - b.stack)
                 }).map(card => <li style={{cursor: 'pointer'}} onClick={handleDiscard} id={card.id} key={card.id}>
-                    {card.description}
+                    {card.stack} {card.description}
+                    <button onClick={handleDiscard} id={card.id}>MOV</button>
                 </li>)}
                 </ul>
             </div>
@@ -19,6 +20,7 @@ function Piles() {
                 <p>Discarded Pile</p>
                 <ul>{cards.filter(card => card.discarded).map(card => <li id={card.id} key={card.id}>
                     {card.description}
+                    <button onClick={handleInfect} id={card.id}>MOV</button>
                 </li>)}
                 </ul>
                 <button onClick={handleShuffle}>Shuffle</button>

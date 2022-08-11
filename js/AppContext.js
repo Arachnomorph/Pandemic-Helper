@@ -1,4 +1,4 @@
-import React, {createContext, useCallback, useEffect, useMemo, useState} from "react";
+import React, {createContext, useCallback, useMemo, useState} from "react";
 
 const AppContext = createContext(null);
 
@@ -29,10 +29,11 @@ function AppContextProvider({children}) {
     const handleShuffle = useCallback(() => {
         if (isShuffled) {
             setCards(prev => prev.map(card => {
+                const more = card.stack + 1;
                 if (card.discarded) {
                     return {...card, stack: 1, discarded: false}
                 } else {
-                    return {...card, stack: 2, discarded: false}
+                    return {...card, stack: more, discarded: false}
                 }
             }))
         } else {
@@ -44,11 +45,23 @@ function AppContextProvider({children}) {
         const id = parseInt(e.target.id);
         setCards(prev => prev.map(card => {
             if (card.id !== id) {
-                console.log(card)
+                //console.log(card)
                 return {...card}
             }
-            console.log(card)
+            //console.log(card)
             return {...card, discarded: true}
+        }))
+    }, [cards])
+
+    const handleInfect = useCallback(e => {
+        const id = parseInt(e.target.id);
+        setCards(prev => prev.map(card => {
+            if (card.id !== id) {
+                //console.log(card)
+                return {...card}
+            }
+            //console.log(card)
+            return {...card, discarded: false}
         }))
     }, [cards])
 
@@ -59,7 +72,8 @@ function AppContextProvider({children}) {
             setCards,
             handleCreateCard,
             handleShuffle,
-            handleDiscard
+            handleDiscard,
+            handleInfect,
         }
     }, [cards, handleCreateCard()])
 
