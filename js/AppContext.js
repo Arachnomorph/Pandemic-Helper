@@ -57,11 +57,19 @@ function AppContextProvider({children}) {
         const id = parseInt(e.target.id);
         setCards(prev => prev.map(card => {
             if (card.id !== id) {
-                //console.log(card)
                 return {...card}
             }
-            //console.log(card)
             return {...card, discarded: false}
+        }))
+    }, [cards])
+
+    const handleDestroy = useCallback(e => {
+        const id = parseInt(e.target.id);
+        setCards(prev => prev.map(card => {
+            if (card.id !== id) {
+                return {...card}
+            }
+            return {...card, description: 'DELETED'}
         }))
     }, [cards])
 
@@ -74,6 +82,7 @@ function AppContextProvider({children}) {
             handleShuffle,
             handleDiscard,
             handleInfect,
+            handleDestroy
         }
     }, [cards, handleCreateCard()])
 
