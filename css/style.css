@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+button {
+  height: 2rem;
+  background-color: #D1B92E;
+  padding: 5px;
+  border: 2px solid #555555;
+  border-radius: 5px; }
+
+.destroy_button {
+  height: 2rem;
+  width: 2rem;
+  background-image: url("../imgs/bin.png");
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; }
+
+.main_container {
+  display: flex; }
+
+.card_name {
+  font-family: Impact, sans-serif;
+  font-size: large;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.7);
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; }
+
+.stack_1 {
+  border: 2px solid crimson; }
+
+.stack_2 {
+  border: 2px solid goldenrod; }
+
+.stack_3 {
+  border: 2px solid mediumseagreen; }
+
+.card_adder {
+  height: 100%;
+  display: flex; }
+
+.pile {
+  border: 5px solid #D97934;
+  width: 300px; }
+
+.shuffled_pile {
+  background-color: #D13C2B; }
+
+.discarded_pile {
+  background-color: #005A85; }

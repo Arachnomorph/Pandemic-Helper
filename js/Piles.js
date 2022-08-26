@@ -5,28 +5,33 @@ function Piles() {
     const {clearAll, cards, handleShuffle, handleDiscard, handleInfect, handleDestroy} = useContext(AppContext);
 
     return (
-        <div style={{display: 'flex'}}>
-            <div style={{border: '2px solid red'}}>
+        <div className={'main_container'}>
+            <div className={'pile shuffled_pile'}>
                 <p>Infection Pile</p>
                 <ul>{cards.filter(card => card.description !== 'DELETED').filter(card => !card.discarded).sort((a, b) => {
                     return (a.stack - b.stack)
-                }).map(card => <li style={{cursor: 'pointer'}} onClick={handleDiscard} id={card.id} key={card.id}>
-                    {card.stack} {card.description}
-                    <button onClick={handleDiscard} id={card.id}>Discard</button>
-                    <button onClick={handleDestroy} id={card.id}>Destroy</button>
-                </li>)}
-                </ul>
-            </div>
-            <div style={{border: '2px solid green'}}>
-                <p>Discarded Pile</p>
-                <ul>{cards.filter(card => card.description !== 'DELETED').filter(card => card.discarded).map(card => <li id={card.id} key={card.id}>
+                }).map(card => <li className={`card_name stack_${card.stack}`} onClick={handleDiscard} id={card.id} key={card.id}>
                     {card.description}
-                    <button onClick={handleInfect} id={card.id}>Shuffle</button>
-                    <button onClick={handleDestroy} id={card.id}>Destroy</button>
+                    <div className={'buttons'}>
+                        <button onClick={handleDiscard} id={card.id}>Discard</button>
+                        <button className={'destroy_button'} onClick={handleDestroy} id={card.id}> </button>
+                    </div>
                 </li>)}
                 </ul>
-                <button onClick={handleShuffle}>Shuffle All</button>
             </div>
+            <div className={'pile discarded_pile'}>
+                <p>Discarded Pile</p>
+                <ul>{cards.filter(card => card.description !== 'DELETED').filter(card => card.discarded).map(card => <li
+                    className={`card_name`} id={card.id} key={card.id}>
+                    {card.description}
+                    <div className={'buttons'}>
+                        <button onClick={handleInfect} id={card.id}>Shuffle</button>
+                        <button className={'destroy_button'} onClick={handleDestroy} id={card.id}> </button>
+                    </div>
+                </li>)}
+                </ul>
+            </div>
+            <button onClick={handleShuffle}>Shuffle All</button>
             <button onClick={clearAll}>Clear all</button>
         </div>
     )

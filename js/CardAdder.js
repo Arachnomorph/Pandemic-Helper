@@ -13,7 +13,7 @@ const CardAdder = () => {
     }
 
     return (
-        <form onSubmit={handleOnAdd}>
+        <form className={'card_adder'} onSubmit={handleOnAdd}>
             <input type='text' name='inputName' autoComplete='off' placeholder='Enter card name'/>
             <button type='submit'>Add to the next epidemic</button>
         </form>
