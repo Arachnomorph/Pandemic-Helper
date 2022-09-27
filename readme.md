@@ -16,3 +16,5 @@ A companion app for the Pandemic series of boardgames.
 - Also, during a game, you may end up with multiple discrete stacks of infection cards on top of each other.
 - Remembering these may let you plan player turns more effectively.
 - It's not impossible to remember all of that information or write it down on a piece of paper, but using this app might be more convenient.
+
+### I am currently testing this app with Pandemic legacy season 2 and season 0. I might add additional features useful in other games in the future
