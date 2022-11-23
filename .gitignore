@@ -1,7 +1,5 @@
 .vs
 .babelrc
-package.json
-package-lock.json
 webpack.config.js
 scss
 node_modules

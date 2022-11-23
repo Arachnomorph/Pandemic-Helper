@@ -29,26 +29,24 @@ function AppContextProvider({children}) {
     const handleShuffle = useCallback(() => {
         if (isShuffled) {
             setCards(prev => prev.map(card => {
-                const more = card.stack + 1;
                 if (card.discarded) {
                     return {...card, stack: 1, discarded: false}
                 } else {
-                    return {...card, stack: more, discarded: false}
+                    return {...card, stack: card.stack + 1, discarded: false}
                 }
             }))
         } else {
             setCards(prev => prev.map(card => ({...card, discarded: false})))
         }
+        console.log(cards[0])
     }, [cards, isShuffled])
 
     const handleDiscard = useCallback((e) => {
         const id = parseInt(e.target.id);
         setCards(prev => prev.map(card => {
             if (card.id !== id) {
-                //console.log(card)
                 return {...card}
             }
-            //console.log(card)
             return {...card, discarded: true}
         }))
     }, [cards])
