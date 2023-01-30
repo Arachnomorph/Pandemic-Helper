@@ -1,6 +1,6 @@
 # Pandemic Helper
 
-A companion app for the Pandemic series of boardgames.
+A companion app for the Pandemic series of boardgames. You can try it [here](https://arachnomorph.github.io/Pandemic-Helper/)
 
 ## How does it work?
 
