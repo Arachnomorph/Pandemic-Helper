@@ -41,14 +41,11 @@ button {
   align-items: center;
   justify-content: space-between; }
 
-.stack_1 {
-  border: 2px solid crimson; }
-
-.stack_2 {
-  border: 2px solid goldenrod; }
-
-.stack_3 {
-  border: 2px solid mediumseagreen; }
+.stack {
+  border: 2px solid mediumseagreen;
+  margin: 0 0 5px 0; }
+  .stack:last-of-type {
+    margin: 0; }
 
 .card_adder {
   height: 100%;
