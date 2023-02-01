@@ -1,20 +1,38 @@
-import React, { createContext, useCallback, useMemo, useState } from "react";
-import PropTypes from 'prop-types';
+import React, {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import PropTypes from "prop-types";
 
 const AppContext = createContext(null);
 
 function AppContextProvider({ children }) {
   const [cards, setCards] = useState([]);
+  const storageKey = "cards";
+
+  useEffect(() => {
+    if (sessionStorage.getItem(storageKey) === null) {
+      setCards([]);
+    } else {
+      setCards(JSON.parse(sessionStorage.getItem(storageKey)));
+    }
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem(storageKey, JSON.stringify(cards));
+  });
 
   const clearAll = useCallback(() => {
     setCards([]);
+    sessionStorage.setItem(storageKey, JSON.stringify([]));
   }, [cards]);
 
   const handleCreateCard = useCallback(
     (val) => {
-      if (!val) {
-        return;
-      }
+      if (!val) return;
       const card = {
         id: cards.length,
         description: val,
@@ -105,10 +123,10 @@ function AppContextProvider({ children }) {
   }, [cards, handleCreateCard()]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
-};
+}
 
 AppContextProvider.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
 };
 
 export { AppContextProvider };

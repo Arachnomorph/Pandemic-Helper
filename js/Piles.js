@@ -32,32 +32,32 @@ function Piles() {
     <div className={"main_container"}>
       <div className={"pile shuffled_pile"}>
         <p>Infection Pile</p>
-          {shuffledCards.map((group, stack) => (
-            <ul className={`stack`} key={stack}>
-              {group.map((card) => (
-                <li
-                  className={`card_name`}
-                  onClick={handleDiscard}
-                  id={card.id}
-                  key={card.id}
-                >
-                  {card.description}
-                  <div className={"buttons"}>
-                    <button onClick={handleDiscard} id={card.id}>
-                      Discard
-                    </button>
-                    <button
-                      className={"destroy_button"}
-                      onClick={handleDestroy}
-                      id={card.id}
-                    >
-                      {" "}
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          ))}
+        {shuffledCards.map((group, stack) => (
+          <ul className={`stack`} key={stack}>
+            {group.map((card) => (
+              <li
+                className={`card_name`}
+                onClick={handleDiscard}
+                id={card.id}
+                key={card.id}
+              >
+                {card.description}
+                <div className={"buttons"}>
+                  <button onClick={handleDiscard} id={card.id}>
+                    Discard
+                  </button>
+                  <button
+                    className={"destroy_button"}
+                    onClick={handleDestroy}
+                    id={card.id}
+                  >
+                    {" "}
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ))}
       </div>
       <div className={"pile discarded_pile"}>
         <p>Discarded Pile</p>
