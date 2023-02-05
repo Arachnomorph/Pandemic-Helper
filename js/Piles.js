@@ -2,14 +2,8 @@ import React, { useContext } from "react";
 import AppContext from "./AppContext";
 
 function Piles() {
-  const {
-    clearAll,
-    cards,
-    handleShuffle,
-    handleDiscard,
-    handleInfect,
-    handleDestroy,
-  } = useContext(AppContext);
+  const { cards, handleDiscard, handleInfect, handleDestroy } =
+    useContext(AppContext);
 
   const shuffledCards = cards
     .filter((card) => card.description !== "DELETED")
@@ -31,7 +25,6 @@ function Piles() {
   return (
     <div className={"main_container"}>
       <div className={"pile shuffled_pile"}>
-        <p>Infection Pile</p>
         {shuffledCards.map((group, stack) => (
           <ul className={`stack`} key={stack}>
             {group.map((card) => (
@@ -43,15 +36,23 @@ function Piles() {
               >
                 {card.description}
                 <div className={"buttons"}>
-                  <button onClick={handleDiscard} id={card.id}>
-                    Discard
+                  <button className={"discard_button"}>
+                    <span
+                      className={"material-symbols-outlined"}
+                      onClick={handleDiscard}
+                      id={card.id}
+                    >
+                      flip_to_front
+                    </span>
                   </button>
-                  <button
-                    className={"destroy_button"}
-                    onClick={handleDestroy}
-                    id={card.id}
-                  >
-                    {" "}
+                  <button className={"destroy_button"}>
+                    <span
+                      className={"material-symbols-outlined"}
+                      onClick={handleDestroy}
+                      id={card.id}
+                    >
+                      delete_forever
+                    </span>
                   </button>
                 </div>
               </li>
@@ -60,29 +61,34 @@ function Piles() {
         ))}
       </div>
       <div className={"pile discarded_pile"}>
-        <p>Discarded Pile</p>
         <ul>
           {discardedCards.map((card) => (
             <li className={"card_name"} id={card.id} key={card.id}>
               {card.description}
               <div className={"buttons"}>
-                <button onClick={handleInfect} id={card.id}>
-                  Shuffle
+                <button className={"shuffle_button"}>
+                  <span
+                    className={"material-symbols-outlined"}
+                    onClick={handleInfect}
+                    id={card.id}
+                  >
+                    flip_to_back
+                  </span>
                 </button>
-                <button
-                  className={"destroy_button"}
-                  onClick={handleDestroy}
-                  id={card.id}
-                >
-                  {" "}
+                <button className={"destroy_button"}>
+                  <span
+                    className={"material-symbols-outlined"}
+                    onClick={handleDestroy}
+                    id={card.id}
+                  >
+                    delete_forever
+                  </span>
                 </button>
               </div>
             </li>
           ))}
         </ul>
       </div>
-      <button onClick={handleShuffle}>Shuffle All</button>
-      <button onClick={clearAll}>Clear all</button>
     </div>
   );
 }

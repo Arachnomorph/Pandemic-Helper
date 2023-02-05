@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import AppContext from "./AppContext";
 
 const CardAdder = () => {
-  const { handleCreateCard } = useContext(AppContext);
+  const { handleCreateCard, clearAll, handleShuffle } = useContext(AppContext);
 
   const handleOnAdd = (e) => {
     e.preventDefault();
@@ -13,15 +13,25 @@ const CardAdder = () => {
   };
 
   return (
-    <form className={"card_adder"} onSubmit={handleOnAdd}>
-      <input
-        type="text"
-        name="inputName"
-        autoComplete="off"
-        placeholder="Enter card name"
-      />
-      <button type="submit">Add to the next epidemic</button>
-    </form>
+    <div className={"adder_container"}>
+      <form className={"card_adder"} onSubmit={handleOnAdd}>
+        <input
+          type="text"
+          name="inputName"
+          autoComplete="do-not-autofill"
+          placeholder="Enter card name"
+        />
+        <button type="submit">
+          <span className={"material-symbols-outlined"}>add</span>
+        </button>
+      </form>
+      <button>
+        <span onClick={handleShuffle} className={"material-symbols-outlined"}>
+          shuffle
+        </span>
+      </button>
+      <button onClick={clearAll}>Clear All</button>
+    </div>
   );
 };
 

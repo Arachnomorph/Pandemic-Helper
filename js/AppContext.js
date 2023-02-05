@@ -23,7 +23,7 @@ function AppContextProvider({ children }) {
 
   useEffect(() => {
     sessionStorage.setItem(storageKey, JSON.stringify(cards));
-  });
+  }, [cards]);
 
   const clearAll = useCallback(() => {
     setCards([]);
