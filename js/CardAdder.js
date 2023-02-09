@@ -19,18 +19,21 @@ const CardAdder = () => {
           type="text"
           name="inputName"
           autoComplete="do-not-autofill"
-          placeholder="Enter card name"
+          placeholder="Enter city name"
         />
-        <button type="submit">
-          <span className={"material-symbols-outlined"}>add</span>
+        <button type="submit" className={"button-right-edge"}>
+          <span className={"info"}>Infect</span>
+          <span className={"material-symbols-outlined icon"}>add</span>
         </button>
       </form>
-      <button>
-        <span onClick={handleShuffle} className={"material-symbols-outlined"}>
-          shuffle
-        </span>
+      <button onClick={handleShuffle}>
+        <span className={"info"}>Intensify</span>
+        <span className={"material-symbols-outlined icon"}>shuffle</span>
       </button>
-      <button onClick={clearAll}>Clear All</button>
+      <button onClick={clearAll}>
+        <span className={"info"}>Delete all data</span>
+        <span className={"material-symbols-outlined icon"}>refresh</span>
+      </button>
     </div>
   );
 };

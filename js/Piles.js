@@ -34,27 +34,39 @@ function Piles() {
                 id={card.id}
                 key={card.id}
               >
-                {card.description}
                 <div className={"buttons"}>
-                  <button className={"discard_button"}>
+                  <button
+                    className={"button-middle"}
+                    id={card.id}
+                    onClick={handleInfect}
+                  >
+                    <span className={"info"} id={card.id}>
+                      Infect
+                    </span>
                     <span
-                      className={"material-symbols-outlined"}
-                      onClick={handleDiscard}
+                      className={"material-symbols-outlined icon"}
                       id={card.id}
                     >
                       flip_to_front
                     </span>
                   </button>
-                  <button className={"destroy_button"}>
+                  <button
+                    className={"button-right-edge"}
+                    id={card.id}
+                    onClick={handleDestroy}
+                  >
+                    <span className={"info"} id={card.id}>
+                      Remove from play
+                    </span>
                     <span
-                      className={"material-symbols-outlined"}
-                      onClick={handleDestroy}
+                      className={"material-symbols-outlined icon"}
                       id={card.id}
                     >
                       delete_forever
                     </span>
                   </button>
                 </div>
+                <p className={"test"}>{card.description}</p>
               </li>
             ))}
           </ul>
@@ -64,27 +76,39 @@ function Piles() {
         <ul>
           {discardedCards.map((card) => (
             <li className={"card_name"} id={card.id} key={card.id}>
-              {card.description}
               <div className={"buttons"}>
-                <button className={"shuffle_button"}>
+                <button
+                  className={"button-middle"}
+                  id={card.id}
+                  onClick={handleInfect}
+                >
+                  <span className={"info"} id={card.id}>
+                    Intensify
+                  </span>
                   <span
-                    className={"material-symbols-outlined"}
-                    onClick={handleInfect}
+                    className={"material-symbols-outlined icon"}
                     id={card.id}
                   >
                     flip_to_back
                   </span>
                 </button>
-                <button className={"destroy_button"}>
+                <button
+                  className={"button-right-edge"}
+                  id={card.id}
+                  onClick={handleDestroy}
+                >
+                  <span className={"info"} id={card.id}>
+                    Remove from play
+                  </span>
                   <span
-                    className={"material-symbols-outlined"}
-                    onClick={handleDestroy}
+                    className={"material-symbols-outlined icon"}
                     id={card.id}
                   >
                     delete_forever
                   </span>
                 </button>
               </div>
+              <p className={"test"}>{card.description}</p>
             </li>
           ))}
         </ul>
