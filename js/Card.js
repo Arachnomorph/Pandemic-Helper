@@ -10,6 +10,11 @@ function Card({ card }) {
     handleSwitchPiles(card.id);
   };
 
+  const handleOnDestroy = (e) => {
+    e.stopPropagation();
+    handleDestroy(card.id);
+  };
+
   return (
     <li
       className={`card_name`}
@@ -26,7 +31,7 @@ function Card({ card }) {
             {card.discarded ? "flip_to_back" : "flip_to_front"}
           </span>
         </button>
-        <button className={"button-right-edge"} onClick={handleDestroy}>
+        <button className={"button-right-edge"} onClick={handleOnDestroy}>
           <span className={"info"}>Remove from play</span>
           <span className={"material-symbols-outlined icon"}>
             delete_forever

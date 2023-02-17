@@ -94,8 +94,7 @@ function AppContextProvider({ children }) {
   );
 
   const handleDestroy = useCallback(
-    (e) => {
-      const id = parseInt(e.target.id);
+    (id) => {
       setCards((prev) =>
         prev.map((card) => {
           if (card.id !== id) {
