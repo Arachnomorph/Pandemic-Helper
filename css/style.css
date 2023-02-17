@@ -27,7 +27,7 @@
   position: absolute;
   top: calc(0.25 * (1em + 10px));
   left: 0;
-  transition: opacity 200ms; }
+  transition: opacity 50ms; }
 
 button {
   border: none;
@@ -73,7 +73,7 @@ input[type="text"] {
   margin: 20px;
   width: 100%;
   max-width: 620px;
-  height: calc(1em + 10px);
+  height: calc(1rem + 12px);
   display: flex;
   justify-content: space-evenly;
   align-items: center; }
@@ -95,7 +95,7 @@ input[type="text"] {
   font-size: large;
   text-transform: uppercase;
   background: rgba(255, 255, 255, 0.6);
-  height: calc(1em + 10px);
+  height: calc(1rem + 12px);
   margin: 0 0 5px 0;
   padding: 0 0 0 5px;
   border-radius: 3px;
