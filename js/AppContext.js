@@ -14,20 +14,20 @@ function AppContextProvider({ children }) {
   const storageKey = "cards";
 
   useEffect(() => {
-    if (sessionStorage.getItem(storageKey) === null) {
+    if (localStorage.getItem(storageKey) === null) {
       setCards([]);
     } else {
-      setCards(JSON.parse(sessionStorage.getItem(storageKey)));
+      setCards(JSON.parse(localStorage.getItem(storageKey)));
     }
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem(storageKey, JSON.stringify(cards));
+    localStorage.setItem(storageKey, JSON.stringify(cards));
   }, [cards]);
 
   const clearAll = useCallback(() => {
     setCards([]);
-    sessionStorage.setItem(storageKey, JSON.stringify([]));
+    localStorage.setItem(storageKey, JSON.stringify([]));
   }, [cards]);
 
   const handleCreateCard = useCallback(
@@ -45,7 +45,7 @@ function AppContextProvider({ children }) {
   );
 
   const isShuffled = useCallback(() => {
-    return cards.some((el) => !el.discarded);
+    return cards.some((card) => !card.discarded);
   }, [cards]);
 
   const handleShuffle = useCallback(() => {
@@ -64,22 +64,21 @@ function AppContextProvider({ children }) {
     }
   }, [cards, isShuffled]);
 
-  const handleDiscard = useCallback(
-    (e) => {
-      const id = parseInt(e.target.id);
+  const handleSwitchPiles = useCallback(
+    (id) => {
       setCards((prev) =>
         prev.map((card) => {
           if (card.id !== id) {
             return { ...card };
           }
-          return { ...card, discarded: true };
+          return { ...card, discarded: !card.discarded };
         })
       );
     },
     [cards]
   );
 
-  const handleInfect = useCallback(
+  const handleIntensify = useCallback(
     (e) => {
       const id = parseInt(e.target.id);
       setCards((prev) =>
@@ -116,8 +115,8 @@ function AppContextProvider({ children }) {
       setCards,
       handleCreateCard,
       handleShuffle,
-      handleDiscard,
-      handleInfect,
+      handleSwitchPiles,
+      handleIntensify,
       handleDestroy,
     };
   }, [cards, handleCreateCard()]);

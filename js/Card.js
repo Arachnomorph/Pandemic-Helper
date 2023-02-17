@@ -3,34 +3,32 @@ import AppContext from "./AppContext";
 import PropTypes from "prop-types";
 
 function Card({ card }) {
-  const { handleDiscard, handleInfect, handleDestroy } = useContext(AppContext);
-  console.log(card.description);
+  const { handleSwitchPiles, handleDestroy } = useContext(AppContext);
+
+  const handleOnInfect = (e) => {
+    e.stopPropagation();
+    handleSwitchPiles(card.id);
+  };
 
   return (
     <li
       className={`card_name`}
-      onClick={handleDiscard}
+      onClick={handleOnInfect}
       id={card.id}
       key={card.id}
     >
       <div className={"buttons"}>
-        <button className={"button-middle"} id={card.id} onClick={handleInfect}>
-          <span className={"info"} id={card.id}>
-            Infect
+        <button className={"button-middle"} onClick={handleOnInfect}>
+          <span className={"info"}>
+            {card.discarded ? "Intensify" : "Infect"}
           </span>
-          <span className={"material-symbols-outlined icon"} id={card.id}>
-            flip_to_front
+          <span className={"material-symbols-outlined icon"}>
+            {card.discarded ? "flip_to_back" : "flip_to_front"}
           </span>
         </button>
-        <button
-          className={"button-right-edge"}
-          id={card.id}
-          onClick={handleDestroy}
-        >
-          <span className={"info"} id={card.id}>
-            Remove from play
-          </span>
-          <span className={"material-symbols-outlined icon"} id={card.id}>
+        <button className={"button-right-edge"} onClick={handleDestroy}>
+          <span className={"info"}>Remove from play</span>
+          <span className={"material-symbols-outlined icon"}>
             delete_forever
           </span>
         </button>
@@ -42,6 +40,6 @@ function Card({ card }) {
 
 Card.propTypes = {
   card: PropTypes.any,
-}
+};
 
 export default Card;
