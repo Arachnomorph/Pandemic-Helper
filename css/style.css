@@ -23,11 +23,10 @@
 .info {
   white-space: nowrap;
   opacity: 0;
-  transition: opacity 0.5s;
+  transition: opacity 50ms;
   position: absolute;
   top: calc(0.25 * (1em + 10px));
-  left: 0;
-  transition: opacity 50ms; }
+  left: 0; }
 
 button {
   border: none;
@@ -53,6 +52,9 @@ button:hover .icon {
   opacity: 0;
   transition: opacity 300ms; }
 
+.button-left-edge {
+  border-radius: 3px 0 0 3px; }
+
 .button-middle {
   border-radius: 0; }
 
@@ -65,17 +67,18 @@ input[type="text"] {
   font-size: large;
   text-transform: uppercase;
   height: 100%;
+  width: 100%;
   background: rgba(255, 255, 255, 0.6);
   padding: 0 0 0 5px;
   border-radius: 3px 0 0 3px; }
 
-.adder_container {
-  margin: 20px;
+.adder-container {
+  margin: 20px 24px;
   width: 100%;
-  max-width: 620px;
+  max-width: 572px;
   height: calc(1rem + 12px);
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center; }
 
 .buttons {
@@ -85,12 +88,25 @@ input[type="text"] {
   align-items: center;
   justify-content: space-between; }
 
+.big-buttons {
+  height: 100%;
+  width: 252px; }
+
+.big-button {
+  width: 50%;
+  max-width: 50%; }
+  .big-button.info {
+    opacity: 0;
+    transition: opacity 50ms; }
+  .big-button:hover .info {
+    opacity: 1;
+    transition: opacity 500ms 100ms; }
+
 .main_container {
   display: flex;
-  justify-content: center;
   gap: 20px; }
 
-.card_name {
+.card-name {
   font-family: "Anton", sans-serif;
   font-size: large;
   text-transform: uppercase;
@@ -104,7 +120,7 @@ input[type="text"] {
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between; }
-  .card_name:last-of-type {
+  .card-name:last-of-type {
     margin: 0; }
 
 .test {
@@ -116,14 +132,14 @@ input[type="text"] {
     margin: 0;
     padding: 0; }
 
-.card_adder {
+.card-adder {
   height: 100%;
+  width: 252px;
   display: flex;
   align-items: center; }
 
 .pile {
-  width: 50%;
-  max-width: 300px;
+  width: 300px;
   min-height: 100%;
   padding: 20px;
   margin-bottom: 20px; }

@@ -17,7 +17,7 @@ function Card({ card }) {
 
   return (
     <li
-      className={`card_name`}
+      className={`card-name`}
       onClick={handleOnInfect}
       id={card.id}
       key={card.id}

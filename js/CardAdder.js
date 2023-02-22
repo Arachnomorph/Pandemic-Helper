@@ -13,8 +13,8 @@ const CardAdder = () => {
   };
 
   return (
-    <div className={"adder_container"}>
-      <form className={"card_adder"} onSubmit={handleOnAdd}>
+    <div className={"adder-container"}>
+      <form className={"card-adder"} onSubmit={handleOnAdd}>
         <input
           type="text"
           name="inputName"
@@ -26,14 +26,16 @@ const CardAdder = () => {
           <span className={"material-symbols-outlined icon"}>add</span>
         </button>
       </form>
-      <button onClick={handleShuffle}>
-        <span className={"info"}>Intensify</span>
-        <span className={"material-symbols-outlined icon"}>shuffle</span>
-      </button>
-      <button onClick={clearAll}>
-        <span className={"info"}>Delete all data</span>
-        <span className={"material-symbols-outlined icon"}>refresh</span>
-      </button>
+      <div className={"big-buttons"}>
+        <button className={"big-button button-left-edge"} onClick={handleShuffle}>
+          <span className={"info"}>Intensify</span>
+          <span className={"material-symbols-outlined icon"}>shuffle</span>
+        </button>
+        <button className={"big-button button-right-edge"} onClick={clearAll}>
+          <span className={"info"}>Delete all data</span>
+          <span className={"material-symbols-outlined icon"}>refresh</span>
+        </button>
+      </div>
     </div>
   );
 };
