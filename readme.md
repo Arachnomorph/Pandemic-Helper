@@ -4,11 +4,11 @@ A companion app for the Pandemic series of boardgames. You can try it [here](htt
 
 ## How does it work?
 
-- At the start of the game, follow the rulebook, and every time you would draw an infection card, and add it to the infection discard pile, write its name in the textbox and push the button/hit enter.
+- At the start of the game, follow the rulebook, and every time you would draw an infection card, and add it to the infection discard pile ('Infect'), write its name in the textbox and push the '+' button/hit enter.
 - Do the same for the cards drawn at the end of a player turn.
-- Whenever an epidemic card is drawn, add another card from the bottom of the infection pile to the infection discard pile and push 'Shuffle all'.
-- After the first epidemic, the cards drawn at the end of a player turn will repeat themselves. Push 'discard' next to the name corresponding to the card drawn.
-- If you make a mistake, you can shuffle single cards, or delete a card entirely.
+- Whenever an epidemic card is drawn, add another card from the bottom of the infection pile to the infection discard pile and push big 'Infect' button with shuffle icon.
+- After the first epidemic, the cards drawn at the end of a player turn will repeat themselves. Push 'Infect' next to the name corresponding to the card drawn.
+- If you make a mistake, you can move single cards, or delete a card entirely.
 
 ## Why is it useful?
 
