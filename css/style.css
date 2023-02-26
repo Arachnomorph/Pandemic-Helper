@@ -30,10 +30,9 @@
 
 button {
   border: none;
-  height: 100%;
+  height: calc(1rem + 12px);
   width: 37px;
   background-color: #ffd82b;
-  border-radius: 3px;
   cursor: pointer;
   transition: width 200ms;
   position: relative; }
@@ -53,13 +52,19 @@ button:hover .icon {
   transition: opacity 300ms; }
 
 .button-left-edge {
-  border-radius: 3px 0 0 3px; }
+  border-top-left-radius: 3px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 3px; }
 
 .button-middle {
   border-radius: 0; }
 
 .button-right-edge {
-  border-radius: 0 3px 3px 0; }
+  border-top-left-radius: 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 0; }
 
 input[type="text"] {
   all: unset;
@@ -102,7 +107,7 @@ input[type="text"] {
     opacity: 1;
     transition: opacity 500ms 100ms; }
 
-.main_container {
+.main-container {
   display: flex;
   gap: 20px; }
 
@@ -169,3 +174,44 @@ input[type="text"] {
   transition: 0.5s smooth; }
   .on-hover:hover {
     display: inline; }
+
+@media only screen and (max-width: 700px) {
+  #app {
+    gap: 20px;
+    align-items: center; }
+  .main_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; }
+  input[type="text"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; }
+  .button-left-edge {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; }
+  .button-right-edge {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; }
+  .adder-container {
+    height: calc(2 * (1rem + 12px));
+    width: fit-content;
+    margin: 20px 0 0 0;
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .main-container {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .pile {
+    margin: 0; } }

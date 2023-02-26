@@ -22,7 +22,7 @@ function Piles() {
   const discardedCards = cardsInPlay.filter((card) => card.discarded);
 
   return (
-    <div className={"main_container"}>
+    <div className={"main-container"}>
       <div className={"pile shuffled_pile"}>
         {shuffledCards.map((group, stack) => (
           <ul className={`stack`} key={stack}>
