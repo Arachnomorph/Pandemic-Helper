@@ -100,7 +100,7 @@ input[type="text"] {
 .big-button {
   width: 50%;
   max-width: 50%; }
-  .big-button.info {
+  .big-button .info {
     opacity: 0;
     transition: opacity 50ms; }
   .big-button:hover .info {
